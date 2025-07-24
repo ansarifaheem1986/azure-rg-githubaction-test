@@ -2,7 +2,8 @@
 terraform {
   required_version = "1.11.3"
   required_providers {
-    source = "hashicorp/azurerm"
+    source = "hashicorp/setup-terraform@v2"
+    #source = "hashicorp/azurerm"
     version = "~> 3.0"
   }
 }
