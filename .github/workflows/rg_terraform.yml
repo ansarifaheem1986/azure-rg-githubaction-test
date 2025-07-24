@@ -1,0 +1,29 @@
+name: Terraform Azure Deployment
+on:
+  push:
+    branches:
+      - tf-rg-create
+jobs:
+  deploy:
+    name: Terraform Deploy
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        #uses: docker://alpine:latest
+        uses: actions/checkout@v3
+
+      - name: Azure Login 
+        uses: azure/login@v1
+        with:
+          creds: ${{secrets.AZURE_CREDENTIALS}}
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan
+
+      - name: Terraform Apply
+        run: terraform apply
+        #run: terraform apply -auto-approve
