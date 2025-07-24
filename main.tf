@@ -7,6 +7,9 @@ terraform {
   }
 }
 
+provider "azurerm" {
+  features {}
+}
 resource "azurerm_resource_group" "myrg" {
   name = "DevOps-nonprod-eastus-01-rg"
   location = "eastus"
