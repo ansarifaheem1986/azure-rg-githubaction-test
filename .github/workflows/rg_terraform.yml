@@ -18,7 +18,8 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout
+        uses: owner/repo@ref
+        #uses: actions/checkout
 
       - name: Setup Terraform
         uses: hashicorp/azurerm
