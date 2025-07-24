@@ -7,14 +7,14 @@ on:
 
 jobs:
   deploy:
-    name: Terraform Apply
+    name: Terraform Deploy
     runs-on: ubuntu-latest
 
-    env:
-      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+    #env:
+      #ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      #ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      #ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      #ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
 
     steps:
       - name: Checkout repository
@@ -24,9 +24,14 @@ jobs:
         #uses: actions/checkout
 
       - name: Setup Terraform
-        uses: hashicorp/setup-azurerm@v2.0.3
+        uses: hashicorp/setup-terraform@3
         with:
           terraform_version: 1.11.3
+
+      - name: Azure Login 
+        uses: azure/login@v1
+        with:
+          creds:${{secrets.AZURE_CREDENTIALS}}
 
       - name: Terraform Init
         run: terraform init
