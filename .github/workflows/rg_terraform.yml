@@ -24,7 +24,7 @@ jobs:
         #uses: actions/checkout
 
       - name: Setup Terraform
-        uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.11.3
+        uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
         #uses: hashicorp/setup-terraform@3
         #with:
           #terraform_version: 1.11.3
