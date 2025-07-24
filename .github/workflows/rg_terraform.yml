@@ -1,17 +1,46 @@
 name: Terraform Azure Deployment
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/tf-rg-create
 on:
   push:
     branches:
       - tf-rg-create
+<<<<<<< HEAD
 jobs:
   deploy:
     name: Terraform Deploy
     runs-on: self-hosted
+=======
+
+jobs:
+  deploy:
+    name: Terraform Deploy
+    runs-on: ubuntu-latest
+
+    #env:
+      #ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      #ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      #ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      #ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+>>>>>>> origin/tf-rg-create
 
     steps:
       - name: Checkout repository
         #uses: docker://alpine:latest
         uses: actions/checkout@v3
+<<<<<<< HEAD
+=======
+        #uses: owner/repo@ref
+        #uses: actions/checkout
+
+      - name: Setup Terraform
+        #uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.11.3
+>>>>>>> origin/tf-rg-create
 
       - name: Azure Login 
         uses: azure/login@v1
@@ -25,5 +54,9 @@ jobs:
         run: terraform plan
 
       - name: Terraform Apply
+<<<<<<< HEAD
         run: terraform apply
         #run: terraform apply -auto-approve
+=======
+        run: terraform apply -auto-approve
+>>>>>>> origin/tf-rg-create
