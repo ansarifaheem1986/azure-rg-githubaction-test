@@ -3,7 +3,7 @@ name: Terraform Azure Deployment
 on:
   push:
     branches:
-      - feature/tf-rg-create
+      - tf-rg-create
 
 jobs:
   deploy:
