@@ -11,6 +11,9 @@ jobs:
     runs-on: self-hosted
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Azure Login
         uses: azure/login@v1
         with:
@@ -19,18 +22,13 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-  apply:
-    needs: plan
-    runs-on: self-hosted
-    environment:
-      name: approval-required
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      #- name: Terraform Plan
-      #  run: terraform plan
+  #apply:
+    #needs: plan
+    #runs-on: self-hosted
+    #environment:
+      #name: approval-required
+      - name: Terraform Plan
+        run: terraform plan
 
       - name: Terraform Apply
         run: terraform apply
