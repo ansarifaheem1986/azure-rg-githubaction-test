@@ -42,7 +42,7 @@ on:
 
 jobs:
   deploy:
-    name: Azure Infrasturcture Deployment
+    name: Terraform deploy
     runs-on: self-hosted  # or self-hosted if you have your own runner
 
     steps:
